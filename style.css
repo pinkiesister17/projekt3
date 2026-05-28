@@ -1,0 +1,727 @@
+/* ─────────────────────────────────────────────────────────
+   FARVEVARIABLER
+   Alle farver samlet ét sted – ændres her, gælder overalt.
+───────────────────────────────────────────────────────── */
+:root {
+  --pink: #EF85AD;   /* Primær pink – nav, cirkel, footer */
+  --cream:#F3EDE1;   /* Creme baggrund */
+  --dark-pink:#752240;   /* Mørkere pink – hover på nav-links */
+  --blue-: #95B6DD;   /* Blå primærfarve/underrubrikker*/
+  --black: #000000;   /* Primær tekstfarve */
+  --purple:#D9C0D6;   /* Sekunddær tekstfarve*/
+}
+
+/* ─────────────────────────────────────────────────────────
+   NULSTILLING
+   Fjerner browserens standardmargin og padding.
+───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HTML + BODY
+   - background-color: creme baggrund på hele siden
+   - overflow-x hidden: ingen vandret rullepanel
+───────────────────────────────────────────────────────── */
+html, body {
+  background-color: var(--cream);
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BODY
+   - font-family: Instrument Sans Bold bruges OVERALT som standard.
+     font-weight: 700 = bold. Dette gælder alle child-elementer
+     medmindre de overskriver det selv.
+   - display flex + flex-direction column: footer holdes nede
+   - min-height 100vh: siden fylder altid hele skærmhøjden
+───────────────────────────────────────────────────────── */
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;              
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────────────────────
+   NAVIGATION (TOPNAV)
+   - background pink
+   - flex + justify-content center: links centreres vandret
+   - gap: afstand mellem hvert link
+   - padding: luft over og under linkene
+───────────────────────────────────────────────────────── */
+.topnav {
+  background-color: var(--pink);
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  padding: 18px 20px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   NAVIGATIONSLINKS
+   - color cream: hvid/creme tekst på pink baggrund
+   - font-family + font-weight: Instrument Sans Bold
+   - transition: glat farveovergang ved hover
+───────────────────────────────────────────────────────── */
+.topnav a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Instrument Sans Bold', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HOVER PÅ NAVIGATIONSLINKS
+───────────────────────────────────────────────────────── */
+.topnav a:hover {
+  color: var(--dark-pink);
+}
+
+/* ─────────────────────────────────────────────────────────
+   MAIN
+   - flex: 1 sikrer footer altid holdes nede i bunden
+───────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO-SEKTION
+   - padding: luft øverst og nederst om hele hero-blokken
+───────────────────────────────────────────────────────── */
+.hero {
+  padding: 60px 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO-WRAPPER
+   De to kolonner: tekst til venstre, SVG-cirkel til højre.
+   - display flex: kolonner side om side
+   - align-items center: begge kolonner flugtede i midten
+   - max-width + margin auto: centrerer wrapperen på siden
+   - gap: afstand mellem tekst og cirkel
+───────────────────────────────────────────────────────── */
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  gap: 60px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO-TEKST (venstre kolonne)
+   - max-width: begrænser tekstbredden for god læsbarhed
+───────────────────────────────────────────────────────── */
+.hero-text {
+  max-width: 500px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   OVERSKRIFT "Velkommen!"
+   - font-family + font-weight: Instrument Sans Bold
+   - font-size 3.5rem: stor pink overskrift
+   - color: pink fra farvepaletten
+───────────────────────────────────────────────────────── */
+.hero-text h1 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 4.5rem;
+  color: var(--pink);
+  margin-bottom: 25px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BRØDTEKST
+   - font-family + font-weight: Instrument Sans Bold
+   - line-height 1.7: ekstra luft mellem linjerne
+───────────────────────────────────────────────────────── */
+.hero-text p {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CTA-KNAP ("Se Mine Projekter")
+   - display inline-block: nødvendigt for at <a>-tagget
+     kan have padding og opføre sig som en knap
+   - background blue-btn: blå baggrundsfarve
+   - font-family + font-weight: Instrument Sans Bold
+───────────────────────────────────────────────────────── */
+.cta-btn {
+  display: inline-block;
+  background-color: var(--dark-pink);
+  color: var(--cream);
+  padding: 14px 26px;
+  text-decoration: none;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HOVER PÅ CTA-KNAP
+───────────────────────────────────────────────────────── */
+.cta-btn:hover {
+  background-color: var(--pink);
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO-IMAGE (højre kolonne – wrapper om SVG-cirklen)
+   - flex-shrink: 0 forhindrer cirklen i at krympe
+───────────────────────────────────────────────────────── */
+.hero-image {
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER
+   - background pink: samme farve som topnav
+   - display flex: to kolonner side om side
+   - font-family + font-weight: Instrument Sans Bold
+───────────────────────────────────────────────────────── */
+footer {
+  background-color: var(--pink);
+  color: var(--cream);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 20px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER-KOLONNER
+   - flex 1: begge deler pladsen ligeligt
+   - min-width: forhindrer kolonnerne i at blive for smalle
+───────────────────────────────────────────────────────── */
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 140px;
+}
+
+.footer-left {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER OVERSKRIFTER
+───────────────────────────────────────────────────────── */
+.footer-left h2,
+.footer-right h2 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.0rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER KONTAKT-TEKST
+───────────────────────────────────────────────────────── */
+.footer-left p {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER NAVIGATIONSLINKS
+   - display block: hvert link på sin egen linje
+───────────────────────────────────────────────────────── */
+.footer-right a {
+  display: block;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 8px 0;
+  transition: text-decoration 0.1s;
+}
+
+.footer-right a:hover {
+  text-decoration: none;
+  color: var(--dark-pink)
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVT DESIGN – TABLET (max 900px)
+   Kolonner stabler sig oven på hinanden
+───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+    gap: 40px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .circle-svg {
+    width: 380px;
+    height: 380px;
+  }
+}
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVT DESIGN – MOBIL (max 480px)
+───────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .hero {
+    padding: 32px 0;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Cirklen skaleres ned på mobilskærme */
+  .circle-svg {
+    width: 200px;
+    height: 200px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 20px;
+  }
+}
+.circle-svg {
+  width: 550px;
+  height: 550px;
+  display: block;
+}
+.circle-svg .circle-bg { 
+  fill: #EF85AD;
+} 
+.circle-svg .profile-img { 
+  clip-path: url(#photoClip); 
+}
+.circle-svg .name-text { 
+  font-family: 'Instrument Sans', sans-serif; 
+  font-weight: 700;
+  font-size: 36px; 
+  fill: var(--cream); 
+  letter-spacing: 7px; 
+  
+  /* HER STARTER OM MIG SIDEN*/ 
+}
+/* OM MIG SEKTION */
+.overskrift.om.mig {
+font-family: 'Instrument Sans', sans-serif;
+font-weight: 1200px;
+font-size: 4px;
+color: var(--pink);
+margin-bottom: 30px;
+text-align: center;
+}
+/*OM MIG BRØDTEKST*/
+.paragraph.om-mig1 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 650px;
+    margin: 20px auto 50px;
+    color: var(--black);
+    font-style: normal;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.om-mig-section {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 80px;
+  color: var(--pink);
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align:center;
+}
+
+.om-mig-billede {
+  width: clamp(260px, 38vw, 520px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 58% 42% 30% 70% / 42% 53% 47% 70%;
+  margin: 70px auto 70px auto;
+}
+
+.om-mig-billede img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  justify-content: space-between;
+}
+.overskrift-om-mig {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 700;
+    font-size: 3.5 rem;
+    color: var(--pink);
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
+
+.image-ommig {
+   width: auto;
+  height: 50px;
+}
+.left {
+  display: flex;
+  flex-direction: row;
+  gap: 10px
+ 
+}
+/*HER STARTER PROJEKTER SIDEN*/
+.overskrift-projekter {
+font-family: 'Instrument Sans', sans-serif;
+  font-weight:700;
+  font-size:3.5rem;
+  color: var(--pink);
+  margin-top: 60px;
+  margin-bottom: 20px;
+  text-align: center; 
+  font-style: normal;
+}
+.projekter-broedtekst{
+  font-family: 'Instrument Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 650px;
+    margin: 10px auto 40px;
+    margin-bottom: 20px;
+    color: var(--purple);
+    font-style: italic;
+    padding-right: 20px;
+}
+
+.projekter-pentoolbillede img {
+  width: clamp(150px, 50vw, 300px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.projects {
+  font-family:'Instrument Sans', sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.project.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-image,
+.project-text {
+  flex: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+}
+
+.project-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--blue-)
+}
+
+.project-text p {
+  color: var(--blue);
+  font-family:'Instrument Sans', sans-serif; 
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .project,
+  .project.reverse {
+    flex-direction: column;
+  }
+
+  .project-image img {
+    height: 300px;
+  }
+
+  .project-text {
+    text-align: center;
+    padding: 20px;
+    margin:0 auto; 
+  }
+
+  .project-text p {
+    max-width: 100%;
+  }
+}
+/* ===== MOBIL ===== */
+@media (max-width: 768px) {
+
+  /* Navigation */
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Overskrift */
+  .overskrift-projekter {
+    font-size: 2.2rem;
+    margin-top: 30px;
+  }
+
+  /* Brødtekst */
+  .projekter-broedtekst {
+    font-size: 16px;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+
+  /* Projekter layout */
+  .projects {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 50px;
+  }
+
+  .project,
+  .project.reverse {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  /* Billeder */
+  .project-image img {
+    height: auto;
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain; 
+  }
+
+  /* Tekst */
+  .project-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .project-text p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+}
+/*KONTAKT SIDE*/
+
+/* STANDARD KNAP */
+.btn {
+    background: var(--dark-pink);       /* pastel pink som på billedet */
+    color: var(--cream);
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s ease;
+    border: none;
+}
+
+/* OUTLINE-KNAP */
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--dark-pink);
+    color: var(--dark-pink);
+}
+
+.btn:hover {
+    background: var(--dark-pink); 
+}
+
+.btn-outline:hover {
+    background: var(--dark-pink);
+    border-color: var(--dark-pink);
+    color: var(--cream);
+}
+
+/* TEKST */
+.hero-content h1 {
+  color: var(--pink);
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin: 10px 0 30px;
+    color:var(--blue-);
+}
+
+
+/* BILLEDE */
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: auto;
+}
+
+/* HERO WRAPPER */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
+}
+
+/* TEKST */
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin: 10px 0 30px;
+}
+
+/* KNAPPER */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    width:50%;
+    margin: auto;
+}
+
+.btn {
+    background:var(--pink);
+    color: var(--cream);
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--dark-pink);
+    color: var(--dark-pink);
+}
+
+/* BILLEDE */
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: auto;
+}
+.ommig-broedtekst1 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 650px;
+    margin: 10px auto 40px;
+    margin-bottom: 20px;
+    color: var(--purple);
+    font-style: italic;
+    padding-right: 20px;
+
+}
+
+/* 📱 MOBIL-VERSION */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .circle-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.om-mig-section {
+  grid-template-columns: auto;
+  gap: 0;
+}
+    .ommig-broedtekst1 {
+        font-size: 16px;
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+}
+
+.fullWidth {
+    width: 100%;
+    text-align: center;
+}
